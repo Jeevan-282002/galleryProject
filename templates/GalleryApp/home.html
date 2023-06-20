@@ -1,0 +1,85 @@
+{% extends 'GalleryApp/base.html' %}
+{% load static %}
+
+
+<!-- css block  -->
+{% block css %}
+
+{% endblock css %}
+
+<!-- js block  -->
+
+{% block js %}
+
+{% endblock js %}
+
+
+<!-- title block  -->
+
+{% block title %}
+<title>Home Page</title>
+{% endblock title %}
+
+<!-- body block  -->
+
+{% block body %}
+
+<!-- main container  -->
+<div class="container ">
+
+    <!-- row  -->
+
+    <div class="row mt-5">
+
+        <!-- left section  -->
+        <div class="col-8">
+
+            <!-- image container  -->
+            <div>
+            <img src="{% static 'GalleryApp/images/image.jpg' %}" alt="No image">
+        </div>
+
+        </div>
+
+        <!-- right section  -->
+
+        <div class="col-4">
+
+            <div class="p-5 shadow rounded">
+
+                <!-- login division  -->
+
+                <div >
+                    <form action="{% url 'signin' %}" method="post">
+                        {% csrf_token %}
+                        <!-- widgt comes from backend  -->
+                        {% for fm in forms %}
+
+                        <div class="mb-3">
+                            {{fm.label_tag}}
+                            {{fm}}
+                            <span style="color:red;">{{fm.errors}}</span>
+                        </div>
+
+                        {% endfor %}
+
+
+                        <div class="mb-3 text-center">
+                            <input type="submit" value="login" class="btn btn-primary btn-lg">
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- registration division  -->
+
+                <div class="container text-center border-top pt-3">
+                    <a href="{% url 'registration' %}" class="btn btn-success btn-lg">Register</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

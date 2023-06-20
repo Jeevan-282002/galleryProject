@@ -1,0 +1,64 @@
+{% extends 'GalleryApp/base.html' %}
+{% load static %}
+
+
+<!-- css block  -->
+{% block css %}
+
+{% endblock css %}
+
+<!-- js block  -->
+
+{% block js %}
+
+{% endblock js %}
+
+
+<!-- title block  -->
+
+{% block title %}
+<title>Add Image</title>
+
+{% endblock title %}
+
+<!-- body block  -->
+
+{% block body %}
+
+<div class="container">
+
+    <div class="container text-center bg-warning p-3 shadow rounded">
+        <h1 class="display-6">Add Image</h1>
+    </div>
+
+
+    <div class="container mt-5 p-5 shadow w-50">
+        <form action="{% url 'addimage' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- data comews from the backend -->
+
+            {% for fm in forms %}
+                <div class="mb-3">
+                    {{fm.label_tag}}
+                    {{fm}}
+                </div>
+
+            {% endfor %}
+
+            <div class="text-center mb-3">
+                <input type="submit" value="Upload Image" class="btn btn-success btn-lg">
+            </div>
+
+
+
+
+
+        </form>
+    </div>
+
+
+
+</div>
+
+{% endblock body %}

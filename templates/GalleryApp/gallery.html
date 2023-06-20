@@ -1,0 +1,90 @@
+{% extends 'GalleryApp/base.html' %}
+{% load static %}
+
+
+<!-- css block  -->
+{% block css %}
+
+{% endblock css %}
+
+<!-- js block  -->
+
+{% block js %}
+
+
+{% endblock js %}
+
+
+<!-- title block  -->
+
+{% block title %}
+<title>Gallery Page</title>
+
+{% endblock title %}
+
+<!-- body block  -->
+
+{% block body %}
+
+<div class="container my-5">
+
+
+
+    <!-- row  -->
+
+    <div class="row">
+
+        <!-- left section  -->
+        <div class="col-3">
+
+            <!-- list div  -->
+
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{% url 'gallery' %}" class="text-decoration-none">All Images</a></li>
+                
+                
+                    {% for category in Categories %}
+
+                    <li class="list-group-item"><a href="{% url 'catimage' category.id %}" class="text-decoration-none">{{category.title}}</a></li>
+
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- right section  -->
+        <div class="col-9">
+
+            <div class="row">
+
+                {% for img in Image %}
+
+                <div class="col-3 mb-3">
+
+                    <div class="card" style="width: 12rem;">
+                        <img src="{{img.image.url}}" class="card-img-top" alt="No Image" height="150px">
+                        <div class="card-body">
+                          <h5 class="card-title">{{img.img_title}}</h5>
+
+                          
+                        </div>
+
+                        
+                      </div>
+                      <div class="text-center " id="view">
+                        <input type="submit" value="View image" class="btn btn-success btn-sm mt-3 ">
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

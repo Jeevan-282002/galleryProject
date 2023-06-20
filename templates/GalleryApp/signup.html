@@ -1,0 +1,59 @@
+{% extends 'GalleryApp/base.html' %}
+{% load static %}
+
+
+<!-- css block  -->
+{% block css %}
+
+{% endblock css %}
+
+<!-- js block  -->
+
+{% block js %}
+
+{% endblock js %}
+
+
+<!-- title block  -->
+
+{% block title %}
+<title>Sign Up Page</title>
+
+{% endblock title %}
+
+<!-- body block  -->
+
+{% block body %}
+
+<div class="container mt-5">
+    <!-- heading  -->
+    <div class="container p-3 bg-secondary text-center rounded">
+        <h1 class="display-6">Register Page</h1>
+    </div>
+
+        <!-- Backend Form -->
+    <div class="container w-50 mt-5 p-5 shadow">
+
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+
+            {% for fm in forms %}
+
+            <div class="mb-3">
+                {{fm.label_tag}}
+                {{fm}}
+                <span style="color: red;">{{fm.errors | striptags}}</span>
+            </div>
+
+
+            {% endfor %}
+
+            <div class="mb-3 text-center">
+                <input type="submit" value="Register" class="btn btn-success btn-lg">
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock body %}
